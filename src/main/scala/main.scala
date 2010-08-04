@@ -1,7 +1,7 @@
 package ru.ciridiri
 
 import ru.circumflex.core._
-import ru.circumflex.freemarker.FTL._
+import ru.circumflex.scalate.Scalate._
 
 class CiriDiri extends RequestRouter with AuthHelper {
 
@@ -11,7 +11,7 @@ class CiriDiri extends RequestRouter with AuthHelper {
     case Some(page) =>
       onFound(page)
       "ciripage" := page
-      ftl("/ciridiri/page.ftl")
+      render("/WEB-INF/ciridiri/page.jade")
     case None =>
       onNotFound()
       redirect(uri(0) + ".e")
@@ -29,8 +29,10 @@ class CiriDiri extends RequestRouter with AuthHelper {
 
   get("+.html.e") = {
     "ciripage" := Page.findByUriOrEmpty(uri(1))
-    ftl("/ciridiri/edit.ftl")
+    render("/WEB-INF/ciridiri/edit.jade")
   }
+
+  get("/WEB-INF/scalate/errors/500.scaml") = render(uri(0))
 
   post("+.html") = {
     protected_!

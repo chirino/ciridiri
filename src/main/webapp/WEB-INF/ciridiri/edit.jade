@@ -1,0 +1,19 @@
+-@ var ciripage: ru.ciridiri.Page
+h1 Edit page
+:javascript
+  window.onload = function() {
+  document.getElementById('p-content').focus();
+  
+form(method="post" action="#{ciripage.uri}.html" onkeypress="ctrlEnterSubmit(event, this)")
+  fieldset
+    div
+      textarea#p-content(name="content" rows="30" cols="20" style="width: 100%")<
+        &= ciripage.content
+    - if( session.get("arni").isEmpty )
+      div
+        label(for="password") Password:
+        input#password(name="password" type="password")
+  fieldset.submits
+    input(type="submit" value="Save")
+    | or
+    a(href="#{ciripage.uri}.html") cancel

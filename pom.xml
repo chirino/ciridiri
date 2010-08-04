@@ -25,7 +25,7 @@
     </dependency>
     <dependency>
       <groupId>ru.circumflex</groupId>
-      <artifactId>circumflex-ftl</artifactId>
+      <artifactId>circumflex-scalate</artifactId>
       <version>${cx.version}</version>
     </dependency>
     <dependency>
@@ -61,6 +61,20 @@
 
   <build>
     <sourceDirectory>src/main/scala</sourceDirectory>
+
+    <resources>
+      <resource>
+        <directory>${basedir}/src/main/resources</directory>
+      </resource>
+      <resource>
+        <directory>${basedir}/src/main/webapp</directory>
+        <includes>
+          <include>WEB-INF/scalate/**</include>
+          <include>WEB-INF/ciridiri/**</include>
+        </includes>
+      </resource>
+    </resources>    
+    
     <plugins>
       <plugin>
         <groupId>org.scala-tools</groupId>
