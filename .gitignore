@@ -4,3 +4,4 @@ src/main/webapp/pages/*
 *.iml
 *.iws
 *.ipr
+.DS_Store
